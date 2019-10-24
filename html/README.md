@@ -299,4 +299,19 @@ demo.dataset['name'] = 'web developer';
 在离线状态时，操作 window.applicationCache 进行需求实现。
 参考链接：[HTML5 离线缓存-manifest简介](https://yanhaijing.com/html/2014/12/28/html5-manifest/)
 
-
+## 30.谈谈你对WEB标准的理解
+- web标准的构成
+ Web标准不是某一个标准，而是由W3C和其他标准化组织制定的一系列标准的集合。
+主要包括结构（Structure）、表现（Presentation）和行为（Behavior）三个方面。
+~~~
+结构标准：结构用于对网页元素进行整理和分类，咱们主要学的是HTML。 最重要
+表现标准：表现用于设置网页元素的版式、颜色、大小等外观样式，主要指的是CSS。
+行为标准：行为是指网页模型的定义及交互的编写，咱们主要学的是 Javascript
+~~~
+- web标准的好处
+*1*、让Web的发展前景更广阔 
+*2*、内容能被更广泛的设备访问
+*3*、更容易被搜寻引擎搜索
+*4*、降低网站流量费用
+*5*、使网站更易于维护
+*6*、提高页面浏览速度

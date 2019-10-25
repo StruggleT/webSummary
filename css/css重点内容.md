@@ -170,6 +170,7 @@ focus用在input获取焦点时使用。
 参考链接:[继承和层叠性](https://www.jianshu.com/p/36e65575225b)
 
 * CSS优先级
+
 定义CSS样式时，经常出现两个或更多规则应用在同一元素上，这时就会出现优先级的问题。
 在考虑权重时，还需要注意一些特殊的情况，具体如下：
 	```
@@ -210,6 +211,7 @@ focus用在input获取焦点时使用。
 
 		#nav p       ----->       0,1,0,1
 	```
+
 * 优先级总结
 1. 使用了 !important声明的规则。
 2. 内嵌在 HTML 元素的 style属性里面的声明。
@@ -253,6 +255,7 @@ focus用在input获取焦点时使用。
  此时的width为200px,包括了内容+padding+border,content内容大小为width-border = 160px
 
  - 标准盒模型：
+ 
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191025094834944.png)![在这里插入图片描述](https://img-blog.csdnimg.cn/20191025094410959.png)
 
 width就是内容的宽度，注意在浏览器中的渲染的实际宽度将是 240px。

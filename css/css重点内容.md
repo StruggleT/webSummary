@@ -103,6 +103,7 @@ span:only-of-type{// span且在它父元素下是唯一类型的span元素；建
 |3	|:hover	|动态伪类选择器	|鼠标以上时	|2|
 |4	|:active	|动态伪类选择器	|访问中跳转页面时	|2|
 |5	|:focus	|动态伪类选择器	|获得焦点时	|2|
+
 link/visited/hover/active是有顺序的，其他顺序可能无效，这是个坑。
 focus用在input获取焦点时使用。
 ## CSS三种显示模式

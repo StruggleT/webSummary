@@ -37,9 +37,9 @@
 
 [href*="baidu"] {color: red;}
 
-[class~="def"] {color: red;}// 属性值具有多值时，使用如<p class="abc def"></p>
+[class~="def"] {color: red;}/*属性值具有多值时，使用如<p class="abc def"></p>*/
 
-[lang|="en"] {color: red;}// 属性中有'-'时使用，如<p lang="en-us"></p>
+[lang|="en"] {color: red;}/*属性中有'-'时使用，如<p lang="en-us"></p>*/
 ```
 - 复合选择器
 
@@ -74,16 +74,16 @@
 |6	|:nth-child(n)	|子元素选择器	|第n个子元素	|2|
 
 ```css
-ul > li:first-child{ // li且是第一个子元素的li元素
+ul > li:first-child{ /*li且是第一个子元素的li元素*/
     color:red;
 }
-ul > li:last-child{// li且是最后一个元素的li元素
+ul > li:last-child{/*li且是最后一个元素的li元素*/
     color: blue;
 }
-span:only-child{// span且在它父元素下是唯一的span元素；建议把父元素写出来
+span:only-child{/*span且在它父元素下是唯一的span元素；建议把父元素写出来*/
     color: green;
 }
-span:only-of-type{// span且在它父元素下是唯一类型的span元素；建议把父元素写出来
+span:only-of-type{/*span且在它父元素下是唯一类型的span元素；建议把父元素写出来*/
     color:green;
 };
 ```
@@ -255,7 +255,7 @@ focus用在input获取焦点时使用。
  此时的width为200px,包括了内容+padding+border,content内容大小为width-border = 160px
 
  - 标准盒模型：
- 
+
 ![在这里插入图片描述](https://img-blog.csdnimg.cn/20191025094834944.png)![在这里插入图片描述](https://img-blog.csdnimg.cn/20191025094410959.png)
 
 width就是内容的宽度，注意在浏览器中的渲染的实际宽度将是 240px。

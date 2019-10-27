@@ -121,6 +121,7 @@ focus用在input获取焦点时使用。
 	常见的块元素有<h1>~<h6>、<p>、<div>、<ul>、<ol>、<li>等，其中<div>标签是最典型的块元素。 
 ```
 	- 块级元素的特点：
+	
 （1）总是从新行开始
 
 （2）高度，行高、外边距以及内边距都可以控制。
@@ -324,7 +325,7 @@ width就是内容的宽度，注意在浏览器中的渲染的实际宽度将是
 
 　　3、vertical-align: top/middle/bottom
 
-参考链接：[深入理解line-height与vertical-align](https://www.cnblogs.com/xiaohuochai/p/5271217.html)	、[深度剖析Baseline设计原理](https://juejin.im/post/59c9bc196fb9a00a402e0166)
+参考链接：[深入理解line-height与vertical-align](https://www.cnblogs.com/xiaohuochai/p/5271217.html)	、[深度剖析Baseline设计原理](https://juejin.im/post/59c9bc196fb9a00a402e0166)、[你可能不知道的vertical-align](https://zhuanlan.zhihu.com/p/52441893)
 
 ## CSS浮动
 - [什么是浮动](https://www.cnblogs.com/starof/p/4608962.html/)

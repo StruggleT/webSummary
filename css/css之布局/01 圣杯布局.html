@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        body {
+            min-width: 700px;
+        }
+        header,
+        footer {
+            border: 1px solid #333;
+            background: #aaa;
+            text-align: center;
+        }
+        .content {
+            padding: 0 220px 0 200px;
+        }
+        main,.left,.right {
+            position: relative;
+            float: left;
+            min-height: 130px;
+        }
+        main {
+            width: 100%;
+            background-color: aqua;
+            word-wrap: break-all;
+        }
+        .left {
+            margin-left: -100%;
+            left: -200px;
+            width: 200px;
+            background-color: brown;
+        }
+        .right {
+            margin-left: -220px;
+            right: -220px;
+            width: 220px;
+            background-color: burlywood;
+        }
+        footer {
+            clear: both;
+        }
+    </style>
+</head>
+<body>
+    <header>头部</header>
+    <div class="content">
+        <main>
+            <p>kdddddddddddddddd
+                dddddddddddddddflsdfl
+                fdsfddddddsdd
+            </p>
+        </main>
+        <aside class="left">
+            <p> i am left</p>
+        </aside>
+        <aside class="right">
+            <p>i am right</p>
+        </aside>
+    </div>
+    <footer>尾部</footer>
+</body>
+</html>

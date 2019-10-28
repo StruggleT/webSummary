@@ -184,6 +184,8 @@ white-space: no-wrap;
 	- vh：基于视窗的高度计算，1vh 等于视窗高度的百分之一
 	- vmin：基于vw和vh中的最小值来计算，1vmin 等于最小值的百分之一
 	- vmax：基于vw和vh中的最大值来计算，1vmax 等于最大值的百分之一
+    
+- 参考链接：[css中的px、em、rem 详解](https://juejin.im/post/5c09ee54518825477c16fd8b)
 
 ## 15.CSS 优化、提高性能的方法有哪些？
 - 多个 css 合并，尽量减少 HTTP 请求

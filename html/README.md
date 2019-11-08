@@ -387,3 +387,4 @@ HTML5的离线存储是基于一个新建的.appcache文件的缓存机制(不�
 区分用户是计算机还是人的公共全自动程序。可以防止恶意破解密码、刷票、
 论坛灌水;有效防止黑客对某一个特定注册用户用特定程序暴力破解方式进行
 不断的登陆尝试;
+参考文章：[浅谈Web安全验证码](http://blog.nsfocus.net/discussion-web-security-authentication-code/)

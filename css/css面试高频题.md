@@ -40,7 +40,7 @@ css 选择器匹配元素是逆向解析
 - 请参考网易云社区的文章:[CSS动画的性能分析和浏览器GPU加速](https://juejin.im/post/5bd947326fb9a0226924ad77#heading-2)
 
 ## 6.position的值， relative和absolute分别是相对于谁进行定位的？
-- absolute :生成绝对定位的元素， 相对于最近一级的 定位不是 static 的父元素来进行定位。
+- absolute   生成绝对定位的元素，定位原点是离自己这一级元素最近的一级position设置为absolute或者relative的父元素的左上角为原点的。
 
 -  fixed （老IE不支持）生成绝对定位的元素，通常相对于浏览器窗口或 frame 进行定位。
 
@@ -205,7 +205,7 @@ white-space: no-wrap;
 	- text-align
 	- text-rendering
 	- word-spacing
-	- white-space
+	- [white-space](https://developer.mozilla.org/zh-CN/docs/Web/CSS/white-space)
 	- text-indent
 	- text-transform
 	- text-shadow
@@ -286,3 +286,86 @@ white-space: no-wrap;
    或者  
    <span></span>  
 ```
+## 23.display有哪些值？说明他们的作用。
+
+参考：[display属性](https://www.w3school.com.cn/cssref/pr_class_display.asp)
+
+## 24.怎么让Chrome支持小于12px 的文字？
+
+```css
+p{font-size:10px;-webkit-transform:scale(0.8);} /*0.8是缩放比例*/
+```
+## 25.让页面里的字体变清晰，变细用CSS怎么做？
+
+```css
+-webkit-font-smoothing在window系统下没有起作用，但是在IOS设备上起作用,-webkit-font-smoothing：antialiased是最佳的，灰度平滑。
+```
+## 26.一个满屏 品 字布局 如何设计?
+链接：[满屏 品 字布局 ](https://blog.csdn.net/sjinsa/article/details/70903940)
+
+## 27.经常遇到的浏览器的兼容性有哪些？原因，解决方法是什么，常用hack的技巧 ？
+
+(1) `IE6不支持png-24透明图片`，问题出现的浏览器：IE6及其更低的版本问题描述：在IE6浏览器上，使用png24为的图片不透明，出现背景。
+
+解决方法：图片使用gif格式，或者png-8格式图片。
+
+(2) `3像素问题`，问题出现的浏览器：IE6及其更低的版本
+
+问题描述：两个相邻的div之间有3个像素的空隙，一个div使用了float,而另一个没有使用产生的。
+
+解决方法：对另一个div也使用float;
+给浮动的div添加属性margin-right:-3px,但是这样写，在其他浏览器又会不正常，所以我们需要添加IE6的hack，在属性margin-right前添加下划线  _margin-right:-3px.(IE6以及更低版本的hack，是在属性前面添加下划线 _ )
+
+(3) `浏览器默认的margin和padding不同，`
+
+解决方案是加一个全局的*{margin:0;padding:0;}来统一。
+
+但是这样效率会低很多(据说)，因为它重置了所有元素的样式，包括不需要重置的样式，例如table ,我们不需要去重置table元素的样式，所以还需要再为 table 设置默认样式,反而增加了代码量。
+
+因此推荐使用下面的方法：
+
+  - [normalize.css](https://necolas.github.io/normalize.css/)
+
+(4) `IE5-IE8不支持opacity,`问题出现的浏览器：IE8及其更低的版本
+
+问题描述：IE5-IE8不支持css属性opacity
+
+解决方法：这时可以另外添加ie滤镜alpha,如下：
+
+```css
+Opacity:0.8;
+
+Filter:alpha(opacity=80);
+
+-ms-filter:"progid:DXImageTransform.Microsoft.Alpha(opacity=80)";
+```
+
+(5) `IE6不能定义1px左右宽度的容器,`问题出现的浏览器：IE6及其更低的版本
+
+问题描述：创建一个高度为1px的容器，在IE6中没效果。
+
+解决方法：因为行高line-height在IE6下有默认值，设置 line-height:1px|overflow:hidden|zoom:0.08.
+
+(6) `Firefox点击链接出现的虚线框,`问题出现的浏览器：Firfox浏览器
+
+问题描述：Firefox浏览器在点击链接时，会自动在元素周围添加一个虚线边框。
+
+解决方法：我们为了和其他浏览器保持一致，需要去掉虚线框，我们可以给a标签设 置outline属性，如下：
+
+a{outline:none;}
+
+a:focus{outline:none;}
+
+(7) `IE6不支持min-*，`问题出现的浏览器：IE6及其更低的版本
+
+问题描述：IE6不支持min-height属性。即使定义了元素高度，如果内容超过元素的高度，IE6在解析时，会自动延长元素的高度。
+
+解决方法：利用IE6不识别！Important，给元素设置固定高度，并且设置元素高度自动。
+
+Height : auto  ! important;
+
+Height:300px;
+
+Min_height:300px;
+
+因为IE6不识别!Important，它只识别到了height:300px,当内容超过300px时,它会自动延长高度。IE7以及其他浏览器都识别！Important，虽然定义了Height:300px,但是！Important的优先级别最高。所以内容超过300px时，还是会自动延长。

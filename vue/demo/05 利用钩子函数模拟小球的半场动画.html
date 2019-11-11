@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/vue-2.4.0.js"></script>
+  <style>
+    .ball {
+      width: 20px;
+      height: 20px;
+      background-color: aqua;
+      border-radius: 50%;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <input type="button" value="添加购物车" @click="flag=!flag">
+    <transition @before-enter="beforeEnter" @enter="enter" @after-enter="afterEnter">
+      <div class="ball" v-if="flag"></div>
+    </transition>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        flag: false
+      },
+      methods: {
+        //el是DOM对象
+        beforeEnter(el) {
+          el.style.transform = 'translate( 0, 0)'
+        },
+        enter(el, done) {
+          //el.offsetWidth没有这句话不会出动画
+          el.offsetWidth
+          el.style.transform = 'translate( 100px, 200px)'
+          el.style.transition = 'all 1s linear'
+          done()
+        },
+        afterEnter() {
+          this.flag = !this.flag
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

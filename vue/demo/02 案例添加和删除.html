@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <label>id:
+      <input type="text" v-model="id" autofocus="au">
+    </label>
+    <label>name:
+      <input type="text" v-model="name">
+    </label>
+    <label>gender:
+      <input type="text" v-model="gender">
+    </label>
+    <input type="button" value="添加" @click="add">
+    <table border=1>
+      <thead>
+        <tr>
+          <td>id</td>
+          <td>name</td>
+          <td>gender</td>
+          <td>操作</td>
+        </tr>
+      </thead>
+      <tbody>
+        <tr v-for="item in list" :key="item.id">
+          <td>{{item.id}}</td>
+          <td v-text="item.name"></td>
+          <td v-text="item.gender"></td>
+          <td><a href="#" @click.prevent="del(item.id)">删除</a></td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        list: [{
+          id: 1,
+          name: '小黑',
+          gender: '男'
+        }, {
+          id: 2,
+          name: '小白',
+          gender: '男'
+        }, {
+          id: 3,
+          name: '小红',
+          gender: '女'
+        }, {
+          id: 4,
+          name: '小绿',
+          gender: '男'
+        }],
+        id: '',
+        name: '',
+        gender: ''
+      },
+      methods: {
+        del(id) {
+          this.list.some((item, i) => {
+            if (id == item.id) {
+              this.list.splice(i, 1)
+              return true
+            }
+          })
+        },
+        add() {
+          this.list.push({
+            id: this.id,
+            name: this.name,
+            gender: this.gender
+          })
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

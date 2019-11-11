@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <input type="button" value="跑起来" @click="go">
+    <input type="button" value="停下" @click="stop">
+    <p>{{ msg }}</p>
+  </div>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        msg: '你好啊，开始跑马灯',
+        timeId: null
+      },
+      methods: {
+        go() {
+
+          if (this.timeId !== null) return
+
+          this.timeId = setInterval(function () {
+            var start = this.msg.substring(0, 1)
+            var end = this.msg.substring(1)
+            this.msg = end + start
+          }.bind(this), 400);
+        },
+        stop() {
+          clearInterval(this.timeId)
+          this.timeId = null
+        }
+
+      }
+    })
+  </script>
+</body>
+
+</html>

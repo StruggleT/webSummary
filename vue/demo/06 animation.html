@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/vue-2.4.0.js"></script>
+  <style>
+    .v-enter-active {
+      animation: moveCc .5s;
+    }
+
+    .v-leave-active {
+      animation: moveCc .5s reverse;
+    }
+
+    /* 动画序列 */
+    @keyframes moveCc {
+      0% {
+        transform: scale(0);
+      }
+
+      50% {
+        transform: scale(1.5);
+      }
+
+      100% {
+        transform: scale(1);
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <input type="button" value="动" @click="flag=!flag">
+    <transition>
+      <p v-if="flag">都没事</p>
+    </transition>
+  </div>
+  <script>
+    var vm = new Vue({
+      el:'#app',
+      data:{
+        flag:false
+      },
+      methods: {
+        
+      },
+    })
+  </script>
+</body>
+
+</html>

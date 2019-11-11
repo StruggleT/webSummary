@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/vue-2.4.0.js"></script>
+  <style>
+    li {
+      list-style: square;
+      width: 100%;
+      background-color: aqua;
+      border: 1px dashed red;
+      padding-left: 10px;
+      line-height: 40px;
+    }
+    li:hover {
+      background-color: pink;
+      transition: all 0.8s ease;
+    }
+    .v-enter,
+    .v-leave-to {
+      transform: translateY(40px);
+      opacity: 0;
+    }
+    .v-enter-active,
+    .v-leave-active {
+      transition: all .8s linear;
+    }
+    .v-move {
+      transition: all .8s linear;
+    }
+    .v-leave-active {
+      position: absolute;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <label>id:
+      <input type="text" v-model="id">
+    </label>
+    <label>name:
+      <input type="text" v-model="name">
+    </label>
+    <input type="button" value="添加" @click="add">
+    <transition-group appear tag="ul">
+        <li v-for="(item, i) in list" :key="item.id" @click="del(i)">
+          {{item.id}}-------{{item.name}}----{{item.time | formatDate()}}
+        </li>
+    </transition-group>
+
+  </div>
+  <script>
+    Vue.filter('formatDate', function (dateStr,pattern="") {
+      var date = new Date(dateStr)
+      // 2016-01-10
+      var y = date.getFullYear()
+      var m = date.getMonth() + 1
+      var d = date.getDate()
+
+      if (pattern.toLowerCase() === 'yyyy-mm-dd') {
+        return y + '-' + (m < 10 ? '0' + m : m) + '-' + (d < 10 ? '0' + d : d)
+      }else {
+        var h = date.getHours()
+        var mm = date.getMinutes()
+        var s = date.getSeconds()
+
+        return `${y}-${m}-${d} | ${h}:${mm}:${s}`
+      }
+
+
+      
+    })
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        list: [{
+          id: 1,
+          name: '小黑',
+          time: new Date()
+        }, {
+          id: 2,
+          name: '小白',
+          time: new Date()
+        }, {
+          id: 3,
+          name: '小美女',
+          time: new Date()
+        }, {
+          id: 4,
+          name: '小于',
+          time: new Date()
+        }],
+        id: '',
+        name: '',
+        time: ''
+      },
+
+      methods: {
+        del(i){
+          this.list.splice(i,1)
+        },
+        add(){
+          this.list.push({id:this.id,name:this.name,time:new Date()})
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

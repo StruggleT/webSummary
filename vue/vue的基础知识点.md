@@ -55,7 +55,11 @@ mvc 和 mvvm 其实区别并不大。都是一种设计思想。主要就是 mvc
 
 - 每次不会重新进行DOM的删除和创建操作，只是切换了元素的 display:none 样式，但是它有有较高的初始渲染消耗，如果元素可能永远也不会被显示出来被用户看到，则推荐使用 v-if。
 
-## [vue中的过滤器](https://cn.vuejs.org/v2/guide/filters.html)
+## [vue中的过滤器](https://cn.vuejs.org/v2/guide/filters.html)(filter)
 
 
+## [vue中自定义指令](https://cn.vuejs.org/v2/guide/custom-directive.html)(directive)
 
+## [vue中组件的使用](https://cn.vuejs.org/v2/guide/components.html)(component)
+
+## [vue实例的八个生命周期钩子](https://blog.csdn.net/jiang7701037/article/details/83118665)

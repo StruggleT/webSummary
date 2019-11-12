@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <son v-bind:parentvalue="value"></son>
+  </div>
+  <template id="son">
+    <div>
+      <h1 @click="printf">你好啊！我是子组件 -----{{parentvalue}}-----{{msg}}</h1>
+    </div>
+  </template>
+  <script>
+    var vm = new Vue({
+      el: '#app',
+      data: {
+        value: 10
+      },
+      methods: {},
+      components: {
+        'son': {
+          data() {
+            // data 上的数据，都是可读可写的；
+            return {
+              msg:'我是私有组件的数据'
+            }
+          },
+          template: '#son',
+          // props 中的数据，都是只读的，无法重新赋值
+          props: ['parentvalue'],
+          methods: {
+            printf() {
+              // this.parentvalue = '我变了' //此时会警告
+              this.msg='我也开始变了'
+            }
+          }
+        }
+      }
+    })
+  </script>
+</body>
+
+</html>

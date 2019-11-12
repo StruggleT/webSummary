@@ -55,26 +55,24 @@
 
   </div>
   <script>
-    Vue.filter('formatDate', function (dateStr,pattern="") {
-      var date = new Date(dateStr)
-      // 2016-01-10
-      var y = date.getFullYear()
-      var m = date.getMonth() + 1
-      var d = date.getDate()
+    //全局定义的过滤器
+    // Vue.filter('formatDate', function (dateStr,pattern="") {
+    //   var date = new Date(dateStr)
+    //   // 2016-01-10
+    //   var y = date.getFullYear()
+    //   var m = date.getMonth() + 1
+    //   var d = date.getDate()
 
-      if (pattern.toLowerCase() === 'yyyy-mm-dd') {
-        return y + '-' + (m < 10 ? '0' + m : m) + '-' + (d < 10 ? '0' + d : d)
-      }else {
-        var h = date.getHours()
-        var mm = date.getMinutes()
-        var s = date.getSeconds()
+    //   if (pattern.toLowerCase() === 'yyyy-mm-dd') {
+    //     return y + '-' + (m < 10 ? '0' + m : m) + '-' + (d < 10 ? '0' + d : d)
+    //   }else {
+    //     var h = date.getHours()
+    //     var mm = date.getMinutes()
+    //     var s = date.getSeconds()
 
-        return `${y}-${m}-${d} | ${h}:${mm}:${s}`
-      }
-
-
-      
-    })
+    //     return `${y}-${m}-${d} | ${h}:${mm}:${s}`
+    //   } 
+    // })
     var vm = new Vue({
       el: '#app',
       data: {
@@ -106,6 +104,26 @@
         },
         add(){
           this.list.push({id:this.id,name:this.name,time:new Date()})
+        }
+      },
+      filters:{//局部定义的过滤器
+        formatDate(dateStr,pattern=""){
+          var date = new Date(dateStr)
+      // 2016-01-10
+      var y = date.getFullYear()
+      var m = date.getMonth() + 1
+      var d = date.getDate()
+
+      if (pattern.toLowerCase() === 'yyyy-mm-dd') {
+        return y + '-' + (m < 10 ? '0' + m : m) + '-' + (d < 10 ? '0' + d : d)
+      }else {
+        var h = date.getHours()
+        var mm = date.getMinutes()
+        var s = date.getSeconds()
+
+        return `${y}-${m}-${d} | ${h}:${mm}:${s}`
+      }
+
         }
       }
     })

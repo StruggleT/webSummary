@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <input type="text" v-focus>
+  </div>
+  <script>
+    //自定义一个全局指令
+    // Vue.directive('focus', {
+    //   bind(el) {
+
+    //   },
+    //   inserted(el) {
+    //     el.focus()
+    //   },
+    //   updated(el) {
+
+    //   },
+    // })
+
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {},
+      directives: {//局部自定义指令
+        'focus':{
+          bind:function (el) {
+            el.style.color='red'
+          },
+          inserted:function (el) {
+            el.focus()
+          }
+        }
+      },
+    })
+  </script>
+</body>
+
+</html>

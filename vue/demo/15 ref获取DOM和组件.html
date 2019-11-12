@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/vue-2.4.0.js"></script>
+</head>
+
+<body>
+  <div id="app">
+    <input type="button" value="点击获取子组件的msg" @click="getSon">
+    <son ref="sonRef"></son>
+  </div>
+
+  <script>
+    var son = {
+      template: '<h1>我是子组件</h1>',
+      data() {
+        return {
+          sonMsg: '儿子的组件数据'
+        }
+      },
+      methods: {
+        show() {
+          console.log('你好啊，我是子组件的方法')
+        }
+      },
+    }
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {
+        getSon() {
+          // console.log(this.$refs.sonRef.sonMsg) //获取属性
+          this.$refs.sonRef.show() // 获取方法
+        }
+      },
+      components: {
+        son
+      }
+    })
+  </script>
+</body>
+
+</html>

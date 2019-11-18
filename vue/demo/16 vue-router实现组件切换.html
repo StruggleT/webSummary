@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <script src="./lib/vue-2.4.0.js"></script>
+  <!-- 第一步：导入路由的包 -->
+  <script src="./lib/vue-router.js"></script>
+  <style>
+    .myactive {
+      color: aqua;
+      font-size: 30px;
+      font-weight: 800;
+      font-style: italic;
+      background-color: chartreuse;
+      text-decoration: underline;
+    }
+    
+    .v-enter,.v-leave-to {
+      opacity: 0;
+      transform: translateX(150px);
+    }
+    .v-enter-active, .v-leave-active {
+      transition: all .5s linear;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <!-- <a href="#/login">登录</a>
+    <a href="#/register">注册</a> -->
+
+    <router-link to="/login" tag="span">登录</router-link>
+    <router-link to="/register">注册</router-link>
+
+    <transition mode="out-in">
+        <router-view></router-view>
+    </transition>
+  </div>
+
+  <template id="login">
+    <div>
+      <h1>登录组件</h1>
+    </div>
+  </template>
+  <template id="register">
+    <div>
+      <h1>注册组件</h1>
+    </div>
+  </template>
+
+  <script>
+    var loginObj = {
+      template: '#login'
+    }
+    var registerObj = {
+      template: '#register'
+    }
+
+    //第二步：注册路由对象
+    var routerObj = new VueRouter({
+      routes: [{
+        path: '/',
+        redirect: '/login'
+      }, { //路由匹配规则
+        path: '/login',
+        component: loginObj
+      }, {
+        path: '/register',
+        component: registerObj
+      }],
+      linkActiveClass: 'myactive'
+    })
+
+    var vm = new Vue({
+      el: '#app',
+      data: {},
+      methods: {},
+      // components: {
+      //   loginObj,
+      //   registerObj
+      // },
+      router: routerObj // 第三步：router监听url地址的变化，然后展示对应的组件
+    })
+  </script>
+</body>
+
+</html>
